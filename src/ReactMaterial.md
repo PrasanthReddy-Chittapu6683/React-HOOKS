@@ -194,13 +194,13 @@
 
 #### `Steps to use Context object in Class Component`
 `Step 1`: Create the context and export it
-            export const UserContext = React.createContext();  in APP.js
-`Step 2`: Wrap ComponentC6 with Context object provider `UserContext.Provider` and pass username as props
-            <UserContext.Provider value={'PRCV'}>
+            `export const UserContext = React.createContext();  in APP.js`<br/>
+`Step 2`: Wrap ComponentC6 with Context object provider `UserContext.Provider` and pass username as props<br/>
+           ` <UserContext.Provider value={'PRCV'}>
                 <ComponentC6></ComponentC6>
-            </UserContext.Provider>
-`Step 3`: Import Context object in ComponentF6 component and retreive username props using `UserContext.Consumer`
-            return (
+            </UserContext.Provider>`<br/>
+`Step 3`: Import Context object in ComponentF6 component and retreive username props using `UserContext.Consumer`<br/>
+            `return (
                 <div>
                     <UserContext.Consumer>
                         {
@@ -210,7 +210,8 @@
                         }
                     </UserContext.Consumer>
                 </div>
-            )
+            )`<br/>
+            
 #### `Steps to use useContext() HOOK object `<br />
 `Step 1`: Import the `UserContext` & `LanguageContext` object in to ComponentE.js file from App.js<br/>
 `Step 2`: Import `useContext` from `react` in `ComponentF6.js`<br />
@@ -218,7 +219,7 @@
             Ex: const User_Context = useContext(UserContext)
                 const Language_Context = useContext(LanguageContext)<br />
 `Step 4`: Just use the const values in JSX<br />
-            Ex: <div> {Language_Context}, {User_Context}</div>
+            Ex: `<div> {Language_Context}, {User_Context}</div>`
              
 
 
