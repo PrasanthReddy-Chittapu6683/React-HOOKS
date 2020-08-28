@@ -171,32 +171,10 @@
     - Context provides a way to pass through the component tree without having to pass props down manually at each level.
 => Refer the code for how to use Contex in Class Component [React Context](https://github.com/PrasanthReddy-Chittapu6683/ReactJs-V16.13.1/blob/master/reactjs-my-learnings/reactJs.txt)
 
-![GitHub Logo](/images/useContext1.JPG)
+![](images/useContext1.JPG)
 
 
-                        _____
-                        | A |
-         |------------->|___|
-         |                |
-         |                |
-         |                |
-         |                |
-         |                |
-         |                |
-   _ _ _ |_ _ _ _       _ |_ _               _ _ 
-  | AppComponent |----> | B  |------------> | D |
-  |_ _ _ _ _ _ _ |      |_ _ |              |_ _ |
-         |                |
-         |                |
-         |                |
-         |                |
-         |                |
-         |                |
-         |              _ |_                _ _               _ _
-         | -----------> | C |------------> | E |------------>| F |
-                        |_ _|              |_ _|             |___| 
-
-
+                   
 #### `Steps to use Context object in Class Component`
 * `Step 1`: Create the context and export it
   * `export const UserContext = React.createContext();  in APP.js` 
