@@ -216,7 +216,7 @@
 `Step 2`: Import `useContext` from `react` in `ComponentF6.js`<br />
 `Step 3`: create object of useContext() by passing `UserContext` & `LanguageContext` as an argument<br />
             Ex: const User_Context = useContext(UserContext)
-                const Language_Context = useContext(LanguageContext)
+                const Language_Context = useContext(LanguageContext)<br />
 `Step 4`: Just use the const values in JSX<br />
             Ex: <div> {Language_Context}, {User_Context}</div>
              
