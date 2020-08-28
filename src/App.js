@@ -1,14 +1,17 @@
 import React from 'react';
-import ClassuseStateCounter1 from './components/ClassuseStateCounter1'
+import ClassuseStateCounter1 from './components/useState/ClassuseStateCounter1'
 import './App.css';
-import HookuseStateCounter1 from './components/HookuseStateCounter1';
-import HookuseStateCounter2 from './components/HookuseStateCounter2';
-import HookuseStateObjectCounter3 from './components/HookuseStateObjectCounter3';
-import HookuseStateArrayCounter4 from './components/HookuseStateArrayCounter4';
-import UseEffectClassComponent5 from './components/UseEffectClassComponent5';
-import UseEffectFuncComponent5 from './components/UseEffectFuncComponent5';
-import UseEffectFuncCompRunOnce5 from './components/UseEffectFuncCompRunOnce5';
-import UserEffectMouseContainer from './components/UserEffectMouseContainer';
+import HookuseStateCounter1 from './components/useState/HookuseStateCounter1';
+import HookuseStateCounter2 from './components/useState/HookuseStateCounter2';
+import HookuseStateObjectCounter3 from './components/useState/HookuseStateObjectCounter3';
+import HookuseStateArrayCounter4 from './components/useState/HookuseStateArrayCounter4';
+import UseEffectClassComponent5 from './components/useEffect/UseEffectClassComponent5';
+import UseEffectFuncComponent5 from './components/useEffect/UseEffectFuncComponent5';
+// import UseEffectFuncCompRunOnce5 from './components/UseEffectFuncCompRunOnce5';
+import UserEffectMouseContainer from './components/useEffect/UserEffectMouseContainer';
+import UseEffectIntervalHook5 from './components/useEffect/UseEffectIntervalHook5';
+import UseEffectGetDataFeching5 from './components/useEffect/UseEffectGetDataFeching5';
+import UseEffectPostDataFeching5 from './components/useEffect/UseEffectPostDataFeching5';
 
 function App() {
   return (
@@ -50,7 +53,18 @@ function App() {
           <small>Calling UseEffectFuncCompRunOnce5 component using  UserEffectMouseContainer component which helps to clean up </small>
           <small> ON clicking the Toggel button we are un mouting the  UseEffectFuncCompRunOnce5 component which is having mousemove event listener.</small>
           <UserEffectMouseContainer></UserEffectMouseContainer>
+          <br />
+          <small>useEffect with incorrect dependency (setInterval)</small>
+          <UseEffectIntervalHook5></UseEffectIntervalHook5>
+
         </li>
+        <li>
+          <h2>useEffect GET HTTP call</h2>
+          <UseEffectGetDataFeching5></UseEffectGetDataFeching5>
+          <h2>useEffect POST HTTP call</h2>
+          <UseEffectPostDataFeching5></UseEffectPostDataFeching5>
+        </li>
+
       </ul>
     </div>
   );

@@ -92,3 +92,80 @@
 
                 }
             }, [])
+    Refer: UseEffectClassComponent5.js
+           UseEffectFuncComponent5.js
+           UseEffectFuncCompRunOnce5.js
+           UseEffectIntervalHook5.js
+           
+### `Fetching data with useEffect`
+    => Let see how to fecth data from end poing inside useEffect(). One thing need to remember in future we have new feature called `Suspence` which is responsiable for data fecthing.
+    => First install `axios`. `(cmd: npm install axios)`
+    => Here am going to use online API call for data fetching `(url: https://jsonplaceholder.typicode.com/ & https://jsonplaceholder.typicode.com/posts)`
+    => While calling API inside the useEffect() dont forget to specicy 2nd argument for dependency list with empty array. If not it will keep calls the API infinite times.
+        Ex: useEffect(() => {
+                axios.get('https://jsonplaceholder.typicode.com/posts').then(
+                    response => {
+                        console.log(response.data)
+                        setPosts(response.data)
+                    }
+                ).catch(error => {
+                    console.log(error)
+                })
+                return () => {
+
+                }
+            }, [])
+    => Let's see how to do  Post call
+            Ex: 
+                const [ID, setID] = useState(1)
+                const [displayData, setDisplayData] = useState({})
+                useEffect(() => {
+                    axios.get(`https://jsonplaceholder.typicode.com/posts/${ID}`).then(
+                        response => {
+                            console.log(response.data)
+                            setDisplayData(response.data)
+                        }
+                    ).catch(error => {
+                        console.log(error)
+                    })
+                    return () => {
+                        // cleanup
+                    }
+                }, [ID])
+                const setIDFunc = (e) => {
+                    setID(e.target.value)
+                }
+                return (
+                    <div>
+                        <label>Enter ID to fetch data: </label>
+                        <input type='text' onChange={setIDFunc} value={ID} />
+                        <table >
+                            <thead>
+                                <tr>
+                                    <td>
+                                        ID
+                                </td>
+                                    <td>
+                                        Title
+                                </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {displayData.id}
+                                    </td>
+                                    <td>
+                                        {displayData.title}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                )
+
+### `useContext`
+    => In Class component perviosly we are sharing the data to nested component with out sharing to middle component using Context.
+        - Context provides a way to pass through the component tree without having to pass props down manually at each level.
+    => Refer the code for how to use Contex in Class Component [React Context](https://github.com/PrasanthReddy-Chittapu6683/ReactJs-V16.13.1/blob/master/reactjs-my-learnings/reactJs.txt)
+    

@@ -42,3 +42,21 @@ ul li {
     transform: rotate(360deg);
   }
 }
+
+table {
+  border: 1px solid gray;   
+  overflow: auto;
+}
+table tr td {
+  min-width: 50px;
+  text-align: left;
+  border: 1px solid gray;
+}
+table thead {
+  background-color: #4fbe9a;
+  color: whitesmoke;
+}
+table thead tr td{
+  text-align: center;
+
+}
