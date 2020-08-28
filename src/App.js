@@ -12,8 +12,15 @@ import UserEffectMouseContainer from './components/useEffect/UserEffectMouseCont
 import UseEffectIntervalHook5 from './components/useEffect/UseEffectIntervalHook5';
 import UseEffectGetDataFeching5 from './components/useEffect/UseEffectGetDataFeching5';
 import UseEffectPostDataFeching5 from './components/useEffect/UseEffectPostDataFeching5';
+import ComponentC6 from './components/useContext/ComponentC6';
 
+export const UserContext = React.createContext();
+export const LanguageContext = React.createContext();
 function App() {
+
+
+
+
   return (
     <div className="App">
       <h1>
@@ -63,6 +70,18 @@ function App() {
           <UseEffectGetDataFeching5></UseEffectGetDataFeching5>
           <h2>useEffect POST HTTP call</h2>
           <UseEffectPostDataFeching5></UseEffectPostDataFeching5>
+        </li>
+        <li>
+          <h2>React Contex & useContext() Hook</h2>
+          <small>Hierary is ComponentC6 - ComponentE6 - ComponentF6</small><br />
+          <small>Here we are passing the data from ComponentC6 to ComponentF6 with out passign to ComponentE6</small><br />
+          <small> We are using Multi- Context object </small>
+
+          <UserContext.Provider value={'Hey PRCV, Am displaying this text using UserContext.Provider'}>
+            <LanguageContext.Provider value={'Am displaying this text from LanguageContext.Provider'}>
+              <ComponentC6></ComponentC6>
+            </LanguageContext.Provider>
+          </UserContext.Provider>
         </li>
 
       </ul>
