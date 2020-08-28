@@ -171,6 +171,8 @@
     - Context provides a way to pass through the component tree without having to pass props down manually at each level.
 => Refer the code for how to use Contex in Class Component [React Context](https://github.com/PrasanthReddy-Chittapu6683/ReactJs-V16.13.1/blob/master/reactjs-my-learnings/reactJs.txt)
 
+![GitHub Logo](/images/useContext1.JPG)
+
 
                         _____
                         | A |
@@ -193,16 +195,6 @@
          |              _ |_                _ _               _ _
          | -----------> | C |------------> | E |------------>| F |
                         |_ _|              |_ _|             |___| 
-
-
-
-
-
-
-
-
-
-
 
 
 #### `Steps to use Context object in Class Component`
@@ -228,27 +220,44 @@
           </UserContext.Provider>` 
        ```
 * `Step 3`: Import Context object in ComponentF6 component and retreive username props using `UserContext.Consumer` 
-            * `return (
-            *     <div>
-            *         <UserContext.Consumer>
-            *             {
-            *                 user => {
-            *                     return <div> User Context value {user}</div>
-            *                 }
-            *            }
-            *         </UserContext.Consumer>
-            *     </div>
-            * )` 
-            
-#### `Steps to use useContext() HOOK object `<br />
-* `Step 1`: Import the `UserContext` & `LanguageContext` object in to ComponentE.js file from App.js<br/>
-* `Step 2`: Import `useContext` from `react` in `ComponentF6.js`<br />
-* `Step 3`: create object of useContext() by passing `UserContext` & `LanguageContext` as an argument<br />
-            * Ex: const User_Context = useContext(UserContext)
-                const Language_Context = useContext(LanguageContext)<br />
-* `Step 4`: Just use the const values in JSX<br />
-            * Ex: `<div> {Language_Context}, {User_Context}</div>`
+     * ```javascript
+            `return (
+                <div>
+                    <UserContext.Consumer>
+                        {
+                            user => {
+                                return <div> User Context value {user}</div>
+                            }
+                       }
+                    </UserContext.Consumer>
+                </div>
+            )` 
+       ```
+#### `Steps to use useContext() HOOK object ` 
+* `Step 1`: Import the `UserContext` & `LanguageContext` object in to ComponentE.js file from App.js 
+* `Step 2`: Import `useContext` from `react` in `ComponentF6.js` 
+* `Step 3`: create object of useContext() by passing `UserContext` & `LanguageContext` as an argument 
+     * ` Ex: const User_Context = useContext(UserContext)
+             const Language_Context = useContext(LanguageContext)`
+* `Step 4`: Just use the const values in JSX 
+    * Ex: `<div> {Language_Context}, {User_Context}</div>`
              
+
+
+#### `useReducer() HOOK`
+
+*   It is used for state management.
+*   It is an alternative for `useState`  
+*   What is the difference b/w `useState &  useReducer`?
+    *   useState is build using useReducer
+*   When to use `useReducer vs useState`?
+    *   NA
+
+##### Hooks so far
+*   useState - state
+*   useEffect - side effects
+*   useContext - context API
+*   useReducer - reducer
 
 
 
