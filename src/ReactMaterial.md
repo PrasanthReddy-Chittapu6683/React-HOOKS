@@ -1,3 +1,5 @@
+
+
 ## React Hooks
 
 ### `What is React Hooks?`
@@ -179,26 +181,52 @@
          |                |
          |                |
          |                |
-   ______|______        __|__              ____ 
-  | AppComponent |----> | B |------------> | D |
-  |______________|      |___|              |___|
+   _ _ _ |_ _ _ _       _ |_ _               _ _ 
+  | AppComponent |----> | B  |------------> | D |
+  |_ _ _ _ _ _ _ |      |_ _ |              |_ _ |
          |                |
          |                |
          |                |
          |                |
          |                |
          |                |
-         |              __|__              _____             _____ 
-         |------------> | C |------------> | E |------------>| F |
-                        | __|              |___|             |___| 
+         |              _ |_                _ _               _ _
+         | -----------> | C |------------> | E |------------>| F |
+                        |_ _|              |_ _|             |___| 
+
+
+
+
+
+
+
+
+
+
+
 
 #### `Steps to use Context object in Class Component`
-*`Step 1`: Create the context and export it
-          * `export const UserContext = React.createContext();  in APP.js`  
+* `Step 1`: Create the context and export it
+  * `export const UserContext = React.createContext();  in APP.js` 
 * `Step 2`: Wrap ComponentC6 with Context object provider `UserContext.Provider` and pass username as props 
-           * ` <UserContext.Provider value={'PRCV'}>
-           *      <ComponentC6></ComponentC6>
-           *  </UserContext.Provider>` 
+  * ```javascript
+        ` <UserContext.Provider value={'PRCV'}>
+                <ComponentC6></ComponentC6>
+           </UserContext.Provider>`
+    ```
+
+
+
+
+
+* `Step 1`: Create the context and export it
+     * `export const UserContext = React.createContext();  in APP.js`  
+* `Step 2`: Wrap ComponentC6 with Context object provider `UserContext.Provider` and pass username as props 
+     * ```javascript
+        ` <UserContext.Provider value={'PRCV'}>
+            <ComponentC6></ComponentC6>
+          </UserContext.Provider>` 
+       ```
 * `Step 3`: Import Context object in ComponentF6 component and retreive username props using `UserContext.Consumer` 
             * `return (
             *     <div>
