@@ -211,13 +211,13 @@
                     </UserContext.Consumer>
                 </div>
             )
-#### `Steps to use useContext() HOOK object `
-`Step 1`: Import the `UserContext` & `LanguageContext` object in to ComponentE.js file from App.js
-`Step 2`: Import `useContext` from `react` in `ComponentF6.js`
-`Step 3`: create object of useContext() by passing `UserContext` & `LanguageContext` as an argument
+#### `Steps to use useContext() HOOK object `<br />
+`Step 1`: Import the `UserContext` & `LanguageContext` object in to ComponentE.js file from App.js<br/>
+`Step 2`: Import `useContext` from `react` in `ComponentF6.js`<br />
+`Step 3`: create object of useContext() by passing `UserContext` & `LanguageContext` as an argument<br />
             Ex: const User_Context = useContext(UserContext)
                 const Language_Context = useContext(LanguageContext)
-`Step 4`: Just use the const values in JSX
+`Step 4`: Just use the const values in JSX<br />
             Ex: <div> {Language_Context}, {User_Context}</div>
              
 
