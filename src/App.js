@@ -13,6 +13,8 @@ import UseEffectIntervalHook5 from './components/useEffect/UseEffectIntervalHook
 import UseEffectGetDataFeching5 from './components/useEffect/UseEffectGetDataFeching5';
 import UseEffectPostDataFeching5 from './components/useEffect/UseEffectPostDataFeching5';
 import ComponentC6 from './components/useContext/ComponentC6';
+import UseReducerCounterOne7 from './components/useReducer/useReducerCounterOne7';
+import UseReducerCounterTwo7 from './components/useReducer/UseReducerCounterTwo7';
 
 export const UserContext = React.createContext();
 export const LanguageContext = React.createContext();
@@ -83,7 +85,12 @@ function App() {
             </LanguageContext.Provider>
           </UserContext.Provider>
         </li>
-
+        <li>
+          <h2>useReducer() Hook</h2>
+          <UseReducerCounterOne7></UseReducerCounterOne7>
+          <h2>useReducer() (complex state & action)</h2>
+          <UseReducerCounterTwo7></UseReducerCounterTwo7>
+        </li>
       </ul>
     </div>
   );
