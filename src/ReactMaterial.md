@@ -200,7 +200,7 @@
                 <ComponentC6></ComponentC6>
             </UserContext.Provider>`<br/>
 `Step 3`: Import Context object in ComponentF6 component and retreive username props using `UserContext.Consumer`<br/>
-            `return (
+            <div>`return (
                 <div>
                     <UserContext.Consumer>
                         {
@@ -210,7 +210,7 @@
                         }
                     </UserContext.Consumer>
                 </div>
-            )`<br/>
+            )`</div><br/>
             
 #### `Steps to use useContext() HOOK object `<br />
 `Step 1`: Import the `UserContext` & `LanguageContext` object in to ComponentE.js file from App.js<br/>
