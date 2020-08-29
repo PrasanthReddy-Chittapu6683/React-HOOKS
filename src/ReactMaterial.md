@@ -46,14 +46,14 @@
         Ex: const [count, setCount] = useState(0)
             -> count is the variable that accepting initial value 0.
             -> setCount is the function we are creating using useState.
-        __Refer__:
-            __ClassuseStateCounter1.js__
-            __HookuseStateCounter1.js__
+        *   __Refer__:
+           * __ClassuseStateCounter1.js__
+           * __HookuseStateCounter1.js__
 
 ### `useState with previous state`
 *   Here will see how to set state using previous value
-    __Refer__: 
-        __HookuseStateCounter2.js__
+*   __Refer__: 
+    * __HookuseStateCounter2.js__
 
 ### `useState with object`
 *   useState will not automatically merge the object value changes. To achieve this in useState we need to use spread operator(...)
@@ -63,8 +63,8 @@
         `- { ...name, firstName: e.target.value }` this expression explains,Copy every property in the 'name' object and then just override the firstName field in the 'name' object. 
     ```
 *   setState in class components will merge the oject change automatically.
-    __Refer__: 
-        __HookuseStateObjectCounter3.js__
+*   __Refer__: 
+    *   __HookuseStateObjectCounter3.js__
 
 ### `useState with array`
 *   useState will not automatically apped the object in the list using set statement. To achieve this need to use spread operator(...)
@@ -77,8 +77,8 @@
             }
        ])
        ```
-    __Refer__: 
-        __HookuseStateArrayCounter4.js__
+ *  __Refer__: 
+    *   __HookuseStateArrayCounter4.js__
 
 ### `useEffect`
 *   The Effect Hook lets you perform side effects in functional Components.
