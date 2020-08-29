@@ -46,29 +46,39 @@
         Ex: const [count, setCount] = useState(0)
             -> count is the variable that accepting initial value 0.
             -> setCount is the function we are creating using useState.
-        Refer:
-            ClassuseStateCounter1.js
-            HookuseStateCounter1.js
+        __Refer__:
+            __ClassuseStateCounter1.js__
+            __HookuseStateCounter1.js__
 
 ### `useState with previous state`
 *   Here will see how to set state using previous value
-    Refer: HookuseStateCounter2.js
+    __Refer__: 
+        __HookuseStateCounter2.js__
 
 ### `useState with object`
 *   useState will not automatically merge the object value changes. To achieve this in useState we need to use spread operator(...)
-    Ex: `<input type='text' value={name.firstName} onChange={e => setName({ ...name, firstName: e.target.value })} ></input>`
+    Ex:
+    ```javascript
+         `<input type='text' value={name.firstName} onChange={e => setName({ ...name, firstName: e.target.value })} ></input>`
         `- { ...name, firstName: e.target.value }` this expression explains,Copy every property in the 'name' object and then just override the firstName field in the 'name' object. 
+    ```
 *   setState in class components will merge the oject change automatically.
-    Refer: HookuseStateObjectCounter3.js
+    __Refer__: 
+        __HookuseStateObjectCounter3.js__
 
 ### `useState with array`
 *   useState will not automatically apped the object in the list using set statement. To achieve this need to use spread operator(...)
-    Ex: setItems([...items, {
-                                id: items.length,
-                                value: Math.floor(Math.random() * 10) + 1
-                            }
-                 ])
-    Refer: HookuseStateArrayCounter4.js
+    Ex:
+        
+    ```javascript
+        setItems([...items, {
+                id: items.length,
+                value: Math.floor(Math.random() * 10) + 1
+            }
+       ])
+       ```
+    __Refer__: 
+        __HookuseStateArrayCounter4.js__
 
 ### `useEffect`
 *   The Effect Hook lets you perform side effects in functional Components.
@@ -78,13 +88,18 @@
 *   We can do conditionally trigger the useEffect() function.
     - useEffect accepts 2nd argument also as an array. This array we need to provide the props and state for which propry changes useEffect() executes.
 *   Still we can make to run useEffect() only once. For this we just need to pass empty array [] in 2nd argument
-    Ex:     useEffect(() => {
+    Ex:   
+    ```javascript
+          useEffect(() => {
                 console.log(`UseEffectFuncCompRunOnce5: useEffect called`)
                 window.addEventListener('mousemove', logMousePosition)
             }, [])
+        ```
 *   We can unmount the component using useEffect() function, same like in Class Components we use to call componentWillUnmout() to unmount the componet.
 *   useEffect() function having retruns function, here we can unmount the component or subscriobtion events
-        Ex: useEffect(() => {
+        Ex: 
+    ```javascript
+            useEffect(() => {
                 console.log(`UseEffectFuncCompRunOnce5: useEffect called`)
                 window.addEventListener('mousemove', logMousePosition)
 
@@ -94,6 +109,7 @@
 
                 }
             }, [])
+    ```            
 *   __Refer__: 
     *   __UseEffectClassComponent5.js__
     *   __UseEffectFuncComponent5.js__
@@ -105,7 +121,10 @@
 *   First install `axios`. `(cmd: npm install axios)`
 *   Here am going to use online API call for data fetching `(url: https://jsonplaceholder.typicode.com/ & https://jsonplaceholder.typicode.com/posts)`
 *   While calling API inside the useEffect() dont forget to specicy 2nd argument for dependency list with empty array. If not it will keep calls the API infinite times.
-        Ex: useEffect(() => {
+        Ex:
+    ```javascript
+        
+         useEffect(() => {
                 axios.get('https://jsonplaceholder.typicode.com/posts').then(
                     response => {
                         console.log(response.data)
@@ -118,8 +137,10 @@
 
                 }
             }, [])
+    ```
 *   Let's see how to do  Post call
             Ex: 
+    ```javascript
                 const [ID, setID] = useState(1)
                 const [displayData, setDisplayData] = useState({})
                 useEffect(() => {
@@ -166,11 +187,11 @@
                         </table>
                     </div>
                 )
-
+    ```
 ### `useContext`
 *   In Class component perviosly we are sharing the data to nested component with out sharing to middle component using Context.
     - Context provides a way to pass through the component tree without having to pass props down manually at each level.
-*   Refer the code for how to use Contex in Class Component [React Context](https://github.com/PrasanthReddy-Chittapu6683/ReactJs-V16.13.1/blob/master/reactjs-my-learnings/reactJs.txt)
+*   __Refer__ the code for how to use Contex in Class Component [React Context](https://github.com/PrasanthReddy-Chittapu6683/ReactJs-V16.13.1/blob/master/reactjs-my-learnings/reactJs.txt)
 
 ![](images/useContext1.JPG)
 
@@ -219,7 +240,9 @@
      * ` Ex: const User_Context = useContext(UserContext)
              const Language_Context = useContext(LanguageContext)`
 * `Step 4`: Just use the const values in JSX 
-    * Ex: `<div> {Language_Context}, {User_Context}</div>`
+    * Ex:   ```javascript 
+                `<div> {Language_Context}, {User_Context}</div>`    
+            ```
 
 *   __Refer__:
     *   __`useContext` folder__
@@ -247,7 +270,8 @@
 *   Code for useReducer implementation
     *   ![](images/useReducer1.PNG)
 *   In this we can access both state & action as an objects
-    *   Ex: ```javascript  
+    *   Ex: 
+    ```javascript  
             const initialState = {
                 firstCounter: 0,
                 secondCounter:0 
@@ -269,7 +293,7 @@
                         return state
                 }
             }
-            ```
+     ```
     *   In the above code we are using spread operator `...state`, this is using for merging the state value because we are having two properties inside the object and we are going to udpate individually. 
 *   By using `action` as an object we can able to pass additional data to the `reducer()` function.
 *   By using `state` as an object we can able to keep tack with multiple state variables.
