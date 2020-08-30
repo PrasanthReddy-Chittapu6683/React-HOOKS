@@ -1,9 +1,17 @@
 import React, { useReducer } from 'react'
 
+
+/**This is the default multiple state object */
 const initialState = {
     firstCounter: 0,
     secondCounter: 0
 }
+
+/** reducer functoon that takes state & action as a paramerter and return new 'state' object.
+ * state: It stores the state object which we decalred above 'const initialState'
+ * action: It store the action object what we need to pass throught dispach() function on any event handler
+ * retrun: it returns new state object with updated values
+*/
 const reducer = (state, action) => {
     switch (action.type) {
         case 'increment':
@@ -14,7 +22,6 @@ const reducer = (state, action) => {
             return { ...state, secondCounter: state.secondCounter + action.ValId }
         case 'decrement2':
             return { ...state, secondCounter: state.secondCounter - action.ValId }
-
         case 'reset':
             return initialState
         default:
@@ -23,6 +30,11 @@ const reducer = (state, action) => {
 }
 
 function UseReducerCounterTwo7() {
+
+    /**
+     * This is the useReducer() Hook function which has a paramert of  reducer() function and state object 
+     * This returns  current state paired with a dispatch method
+     * */
     const [count, dispatch] = useReducer(reducer, initialState)
     return (
         <div>

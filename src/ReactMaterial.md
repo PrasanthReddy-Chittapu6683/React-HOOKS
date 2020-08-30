@@ -252,14 +252,17 @@
 
 *   It is used for state management.
 *   It is an alternative for `useState`  
-*   useReducer is relted to reducer functions
+*   useReducer is related to reducer functions.
+*   Accepts a reducer of type (state, action) => newState, and returns the current state paired with a dispatch method.
+*   useReducer is usually preferable to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. useReducer also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.
 *   useReducer accepts 2 parameter `useReducer(reducer, initialState)`
 *   reducer accepts 2 parameter `reducer(currentState, action)`
 *   What is the difference b/w `useState &  useReducer`?
     *   useState is build using useReducer
 *   When to use `useReducer vs useState`?
     *   NA
-
+*  ##### Lazy initialization:
+    *   You can also create the initial state lazily. To do this, you can pass an init function as the third argument. The initial state will be set to init(initialArg).
 ##### Hooks so far
 *   useState - state
 *   useEffect - side effects
@@ -299,3 +302,118 @@
 *   By using `state` as an object we can able to keep tack with multiple state variables.
 *   This approach maintaining multiple variables in a single state object is known as `local State`
 *   There is another way to deal withe multiple variables in single object is known as  `Global State`
+*   When detaling with multiple state transission, its good idea to have multiple useReducers() making use of same reducer function, This prevents comlexity of code and duplicating the reducer function
+    *   Ex:
+    ``` javascript
+        const [count, dispatch] = useReducer(reducer, initialState, init)
+        const [countTwo, dispatchTwo] = useReducer(reducer, initialState)
+
+         return (
+        <div>
+            <div>Count :- {count}</div>
+            <button onClick={() => dispatch('increment')}>Increment</button>
+            <button onClick={() => dispatch('decrement')}>Decrement</button>
+            <button onClick={() => dispatch('reset')}>Reset</button>
+            <div>Count Two :- {countTwo}</div>
+            <button onClick={() => dispatchTwo('increment')}>Increment2</button>
+            <button onClick={() => dispatchTwo('decrement')}>Decrement2</button>
+            <button onClick={() => dispatchTwo('reset')}>Reset2</button>
+        </div>
+    )
+    ```
+*   __Refer__:
+    *   __`useReducerCounterOne7.js`__
+    *   __`useReducerCounterTwo7.js`__
+    *   __`useReducerCounterThree7.js`__
+
+
+#### `useReducer with useContext HOOK`
+
+*   useReducer is for `Local State Management` ie., at component level
+*   What if we want to share the data between components ie., `Global State Management`?
+    * We can do this by combining useReducer + useContext
+*   For example in these 3 components( __`useReducerCounterOne7.js`__ ,   __`useReducerCounterTwo7.js`__ ,   __`useReducerCounterThree7.js`__) we are displaying Counter values (increment, decrement & reset) by duplicating the same logic in all components. Now we can make use of useContext and share the counter logic accross the components.
+    *   ![](images/useReducer2.PNG)
+*   Lets build logic and create the structure as below hierarchy
+    *   ![](images/useReducer_useContext1.PNG)
+*   There are two steps to achieve this
+    *   `Step 1`: Creater a counter logic in App.js using useReducer() Hook.
+    *   `Step 2`: Provide and consume the counter context in the required component.
+
+#### `Fetch data from API using useReducer()`
+*   Previously we have done fetching the data though API call in useEffect() Hook. Let do the same using useReducer() Hook
+*   There are 4 steps to implement this
+    *   `Step 1`: Add necessary Import
+        *   Ex:
+        ``` javascript
+            import React,{useReducer,useEffect} from 'react'
+            import axios from 'axios'
+        ```
+    *   `Step 2`: Decalre intial state `initialState` and defined `reducer` function
+        ``` javascript
+            /** Here we are grouping the variabled into single object*/
+            const initialState = {
+                loading: true,
+                error: '',
+                post: {
+
+                }
+            }
+            const reducer = (state, action) => {
+                switch (action.type) {
+                    case 'FETCH_SUCCESS':
+                        initialState.error = ''
+                        initialState.loading = false
+                        initialState.post = action.payload
+                        return initialState
+
+                    case 'FETCH_ERROR':
+                        initialState.error = 'Some thing went wrong'
+                        initialState.loading = false
+                        initialState.post = {}
+                        return initialState
+
+                    default:
+                        return initialState
+                }
+            }
+        ```
+     *   `Step 3`: Do API in useEffect hook and create useReducer Hook
+         ``` javascript
+            const [state, dispatch] = useReducer(reducer, initialState)
+            /** 2nd parameter we are passing empty array because we need to call this function only once. ie., we are replicating componentDidMount() method */
+            useEffect(() => {
+                axios.get(`https://jsonplaceholder.typicode.ecom/posts/1`)
+                    .then(response => {
+                        dispatch({ type: 'FETCH_SUCCESS', apiResponse: response.data })
+                    }).catch(error => {
+                        dispatch({ type: 'FETCH_ERROR' })
+                    })
+                return () => {
+
+
+                    // cleanup
+                }
+            }, [])
+         ```
+     *   `Step 3`: Render JSX
+         ``` javascript
+             return (
+                <div>
+                    {state.loading ? 'Loading ... Please wait' : state.post.title}
+                    <b style={{ color: 'orangered' }}> {state.error ? state.error : null} </b>
+                </div>
+            )
+         ```
+
+#### ` useState() vs useReducer()`
+Senario | useState | useReducer
+------------ | -------------
+Types of state | Number, String, Boolean <br/> *Ex Showing cont value*| Object or Array<br/> *Ex Displaying persons data*
+No of State transitions | One or Two variables | Too many variables
+Related State transitions? | No | Yes
+Business Logic  | No business logic | Comlpex business logic
+Local vs Global state   | Local | Global
+         
+ 
+
