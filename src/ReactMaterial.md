@@ -407,9 +407,10 @@
          ```
 
 #### ` useState() vs useReducer()`
+
 Senario | useState | useReducer
------------- | -------------
-Types of state | Number, String, Boolean <br/> *Ex Showing cont value*| Object or Array<br/> *Ex Displaying persons data*
+------------ | ------------- | -------------
+Types of state | Number, String, Boolean | Object or Array
 No of State transitions | One or Two variables | Too many variables
 Related State transitions? | No | Yes
 Business Logic  | No business logic | Comlpex business logic
