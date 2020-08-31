@@ -1,12 +1,12 @@
 import React from 'react'
-import UseReducer_UseContextD8 from './UseReducer_UseContextD8'
+import UseReducerUseContextD8 from './UseReducer_UseContextD8'
 
-function UseReducer_UseContextB8() {
+function UseReducerUseContextB8() {
     return (
         <div>
-            <UseReducer_UseContextD8></UseReducer_UseContextD8>
+            <UseReducerUseContextD8></UseReducerUseContextD8>
         </div>
     )
 }
 
-export default UseReducer_UseContextB8
+export default UseReducerUseContextB8

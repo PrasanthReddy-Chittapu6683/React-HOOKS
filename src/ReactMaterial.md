@@ -417,4 +417,297 @@ Business Logic  | No business logic | Comlpex business logic
 Local vs Global state   | Local | Global
          
  
+#### `useCallback() `
 
+*   Consied if we have one parent component. Inside that we are nested 4 child components.
+*   Each child component is having the logic to display props value sending from parent component and having button click event to incement some value.
+*   Now, If we see the execution of these parent and child component it will execute in order while loading the page.
+*   Next, if we take any button click action of any one of the component, again it will load all the child component. This leads to performance issue that unnecessarly rendering the components.
+*   To overcome this issue we use React.memo & useCallback() Hook.
+*   React.memo() is a higher order component that will prevent functional component for being re-render if its `props or state` do not change.
+    *   Ex: __**`export default React.memo(Count)`**__
+*   React.memo is nothing to do HOOKS, This feature is added from version 16.6+
+*   useCallback() Hook that will return memoized version of callback function that only changes if one of the dependencies has changes.
+*   It is useful when passing callbacks(means any event handlers like click, onchange etc..) to optimized child components that rely on reference equality to prevent unnecessary renders.
+    *   Ex: 
+        ```javascript
+            const incrementAge = useCallback(
+                 () => {
+                     setAge(Age + 1)
+                 }, [Age]
+             )
+            const incrementSalary = useCallback(
+                 () => {
+                     setSalary(Salary + 1000)
+                 },
+                 [Salary]
+             )
+        ``` 
+        
+    *   __Refer__: useCallback folder
+        * __ParenthComponent.js__
+        * __Button.js__
+        * __Count.js__
+        * __Title.js__
+
+#### `useMemo()`
+*   It is used for preformance optimization. 
+*   useMemo and useCallback both are similar, only difference is:
+    *   useCallback - __`caches the provided function`__ instance itself
+    *   useMemo -   It invokes provided function and __`caches its result`__.
+
+*   __Refer__: useMemo folder
+    *   __CounterUseMemo10.js__
+
+#### `usRef()`
+*   This Hook helps us to access the DOM nodes directly with in the functional components.
+    *   Ex: Suppose in login forms will have automatic focus on the User name textbox. This kind of things can achieve easily with useRed() Hook
+        ``` javascript
+        const inputTxtRef = useRef(null)
+        seEffect(() => {
+           //Focus the input element
+           inputTxtRef.current.focus()
+           return () => {
+               // cleanup
+           }
+        , [])
+        return (
+           <div>
+               <input type='text' ref={inputTxtRef} />
+           </div>
+        ```
+*   Using this useRef() Hook we can also store any Mutable value, value will presist throught the renders while also not causing any additional renders when the value changes. 
+*   Even useRef will remember the data stored, when the other state variable changes and render the UI.
+    *   Ex:
+        ``` javascript
+            function UseRefTimer() {
+                const [Timer, setTimer] = useState(0)
+                const intervalRef = useRef()
+
+                useEffect(() => {
+                    intervalRef.current = setInterval(
+                        () => {
+                            setTimer(prevTimer => prevTimer + 1)
+                        }, 1000
+                    )
+                    return () => {
+                        clearInterval(intervalRef.current)
+                    }
+                }, [])
+
+                return (
+                    <div>
+                        useRef Hook Timer - {Timer}
+                        <button onClick={() => clearInterval(intervalRef.current)}>Clear useRef Timer</button>
+
+                    </div>
+                )
+            }
+        ```
+
+#### `Hooks So far`
+    *   useState
+    *   useEffect
+    *   useContext
+    *   useReducer
+    *   useCallback
+    *   useMemo
+    *   useRef
+
+#### `Custom Hooks in React`
+
+*   A Custom Hook is basically a JavaScript function whose name starts with `use`.
+*   A Custom Hook can also call other Hooks if required.
+*   A Custom Hook will design basically to share logic (means its a kind of alternative for Higher Order Components-HOC & Render Props)
+
+Lets see how to create __`Custom Hooks`__
+
+
+### `useDocumentTitle Custom Hook`
+
+Lets create a Custom Hook that basically updates a Document Title.
+*   Fist will create a component to update Document Title without Custom Hook
+    *   Ex:
+        ```javascript
+            import React, { useState, useEffect } from 'react'
+            function DocTitleOne() {
+                const [Count, setCount] = useState(0)
+                useEffect(() => {
+                    document.title = `Increment Count is : ${Count}`;
+                    return () => {
+                        // cleanup
+                    }
+                }, [Count])
+                return (
+                    <div>
+                        <button onClick={() => setCount(Count + 1)}> InCrement Count -{Count}</button>
+                    </div>
+                )
+            }
+        ```
+*   Now use the Custom Hook to display the same count in Document title
+    *   Ex:
+         ```javascript
+                /** Custom Hook*/
+                import React, { useEffect } from 'react'
+                function useDocumentTilteHook(Count) {
+                    useEffect(() => {
+                        document.title = `Increment Count is : ${Count}`;
+                        return () => {
+                            // cleanup
+                        }
+                    }, [Count])
+                }
+                export default useDocumentTilteHook
+
+         /** Now import Custom Hook in to normal Coumponet*/
+
+            import React, { useState } from 'react'
+            import useDocumentTilteHook from './useDocumentTilteHook';
+
+            function DocTitleTwo() {
+                const [Count, setCount] = useState(0)
+                useDocumentTilteHook(Count)
+                return (
+                    <div>
+                        <button onClick={() => setCount(Count + 1)}> InCrement Count Using Custom Hook -{Count}</button>
+                    </div>
+                )
+            }
+            export default DocTitleTwo
+        ```
+
+*   Let see another example `Counter`
+*   Fist will create a component to update Counter value without Custom Hook
+    *   Ex:
+        ``` Javascript
+            import React, { useState, useEffect } from 'react'
+            function CounterOneNoHook() {
+                const [Count, setCount] = useState(0)
+                const IncrementFun = () => {
+                    setCount(prevCnt => prevCnt + 1)
+                }
+                const DecrementFun = () => {
+                    setCount(prevCnt => prevCnt - 1)
+                }
+                const ResetFun = () => {
+                    setCount(0)
+                }
+                return (
+                    <div>
+                        <small> Count Value : {Count}</small>
+                        <button onClick={IncrementFun}>Increase</button>
+                        <button onClick={DecrementFun}>Decrease</button>
+                        <button onClick={ResetFun}>Reset</button>
+
+                    </div>
+                )
+            }
+            export default CounterOneNoHook
+        ```
+
+*    Now use the Custom Hook to display the Count value
+    *   Ex:
+        ``` Javascript
+
+            /**  Custom Hook which return Count, IncrementFun, DecrementFun, ResetFun values as an array*/
+            function useCustomHookCounter(initialCountVal = 0, cntVal) {
+                const [Count, setCount] = useState(initialCountVal)
+                const IncrementFun = () => {
+                    setCount(prevCnt => prevCnt + cntVal)
+                }
+                const DecrementFun = () => {
+                    setCount(prevCnt => prevCnt - cntVal)
+                }
+                const ResetFun = () => {
+                    setCount(initialCountVal)
+                }
+                return [Count, IncrementFun, DecrementFun, ResetFun]
+            }
+
+            export default useCustomHookCounter
+
+            /** Call the custom Hook in the normal componet */
+            import React, { useState, useEffect } from 'react'
+            import useCustomHookCounter from './useCustomHookCounter'
+
+            function CounterTwoCustomHook() {
+                const [Count, IncrementFun, DecrementFun, ResetFun] = useCustomHookCounter(10, 1)
+                return (
+                    <div>
+                        <small> Count Value using Custom Hook : {Count}</small>
+                        <button onClick={IncrementFun}>Increase</button>
+                        <button onClick={DecrementFun}>Decrease</button>
+                        <button onClick={ResetFun}>Reset</button>
+
+                    </div>
+                )
+            }
+
+            export default CounterTwoCustomHook
+
+        ```
+*   Let see another example `Input Elements`
+*   Let implement simple form that user can enter First Name and Last Name.
+    *   Ex:
+        ``` Javascript
+            /**  Custom Hook which return value, bind, reset values as an array*/
+            import { useState } from 'react'
+            function useInputCustomHook(initialValue) {
+                const [value, setValue] = useState(initialValue)
+                const reset = () => {
+                    setValue(initialValue)
+                }
+                const bind = {
+                    value,
+                    onChange: e => {
+                        setValue(e.target.value)
+                    }
+                }
+
+                return [value, bind, reset]
+            }
+
+            export default useInputCustomHook
+
+            /** Call the custom Hook in the normal component */
+            import React from 'react'
+            import useInputCustomHook from './useInputCustomHook'
+
+            function UserFormNoHook() {
+                const [FirstName, bindFirstName, resetFirstName] = useInputCustomHook('')
+                const [LastName, bindLastName, resetLastName] = useInputCustomHook('')
+
+                const submitHandler = e => {
+                    e.preventDefault()
+                    alert(`Helo ${FirstName} , ${LastName}`)
+                    resetLastName()
+                    resetFirstName()
+                }
+
+                return (
+                    <div>
+                        <form onSubmit={submitHandler}>
+                            <div>
+                                <label>First Name</label>
+                                <input  {...bindFirstName} type='text' />
+                            </div>
+                            <div>
+                                <label>Last Name</label>
+                                <input type='text'  {...bindLastName} />
+                            </div>
+                            <div>
+                                <button type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                )
+            }
+
+            export default UserFormNoHook
+
+        ```
+
+
+
+#  `Thank you`

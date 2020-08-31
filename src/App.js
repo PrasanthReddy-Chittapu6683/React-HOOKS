@@ -21,6 +21,16 @@ import UseReducerUseContextB8 from './components/useReducer_useContext/UseReduce
 import UseReducerUseContextC8 from './components/useReducer_useContext/UseReducer_UseContextC8';
 import UseReducerDataFetching9One from './useReducerDataFetching/useReducerDataFetching9One';
 import UseReducerDataFetching9Two from './useReducerDataFetching/UseReducerDataFetching9Two';
+import ParentComponent from './components/useCallback/ParentComponent';
+import CounterUseMemo10 from './components/useMemo/CounterUseMemo10';
+import FoucsInputUseRef from './components/useRef/FoucsInputUseRef';
+import ClassTimerUseRef from './components/useRef/ClassTimerUseRef';
+import UseRefTimer from './components/useRef/useRefTimer';
+import DocTitleOne from './components/customHooks/DocTitleOne';
+import DocTitleTwo from './components/customHooks/DocTitleTwo';
+import CounterOneNoHook from './components/customHooks/CounterOneNoHook';
+import CounterTwoCustomHook from './components/customHooks/CounterTwoCustomHook';
+import UserFormNoHook from './components/customHooks/UserFormNoHook';
 
 export const UserContext = React.createContext();
 export const LanguageContext = React.createContext();
@@ -148,6 +158,38 @@ function App() {
           <small><i>Now, Here we are fetching data from API using useReducer and useEffect </i> </small>
           <UseReducerDataFetching9Two></UseReducerDataFetching9Two>
         </li>
+        <li>
+          <h2>useCallback() </h2>
+          <ParentComponent></ParentComponent>
+        </li>
+        <li>
+          <h2>useMemo() </h2>
+          <small> Here we are setting loop to deplay in displaying the Counter One value. We are using useMemo() hook to
+            display Counter One value, so Counter two will not delay to print his value because to while loop we are using for Counter One. </small>
+          <CounterUseMemo10></CounterUseMemo10>
+        </li>
+
+        <li>
+          <h2>useRef() </h2>
+          <small>Here we are usign useRef for textbox to get focused on page load. </small>
+          <FoucsInputUseRef></FoucsInputUseRef>
+          <ClassTimerUseRef></ClassTimerUseRef>
+          <UseRefTimer></UseRefTimer>
+        </li>
+
+        <li>
+          <h2>Custom Hooks Document Title Example 1 </h2>
+          <DocTitleOne></DocTitleOne>
+          <DocTitleTwo></DocTitleTwo>
+
+          <h2>Custom Hooks Counter Example 2 </h2>
+          <CounterOneNoHook></CounterOneNoHook>
+          <CounterTwoCustomHook></CounterTwoCustomHook>
+
+          <h2>Custom Hooks Input Eleemnt Example 3 </h2>
+          <UserFormNoHook></UserFormNoHook>
+        </li>
+
       </ul>
     </div>
   );
