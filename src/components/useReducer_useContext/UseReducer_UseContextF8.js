@@ -9,7 +9,7 @@ function UseReducerUseContextF8() {
     return (
         <div>
             <div>Component F  - {countContext.countStateFromApp}
-            <button onClick={() => countContext.countDispatchFromAppComp('increment')}>Increment</button>
+                <button onClick={() => countContext.countDispatchFromAppComp('increment')}>Increment</button>
                 <button onClick={() => countContext.countDispatchFromAppComp('decrement')}>Decrement</button>
                 <button onClick={() => countContext.countDispatchFromAppComp('reset')}>Reset</button>
             </div>

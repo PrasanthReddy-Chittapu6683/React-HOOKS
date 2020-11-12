@@ -12,8 +12,12 @@ function ComponentE6() {
     return (
         <div>
             <div>
-                <h3> This text is displaynig using useContext() HOOK : </h3><div> UserContext msg : <b style={{ color: "cornflowerblue" }}>{User_Context}</b> &
-                <br />LanguageContext msg: <b style={{ color: "cornflowerblue" }}>{Language_Context}</b>  </div>
+                <h3> This text is displaynig using useContext() HOOK : </h3>
+                <div> UserContext msg :
+                    <b style={{ color: "cornflowerblue" }}>{User_Context}</b> &
+                    <br />LanguageContext msg:
+                 <b style={{ color: "cornflowerblue" }}>{Language_Context}</b>
+                </div>
             </div>
             <ComponentF6></ComponentF6>
         </div>
