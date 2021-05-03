@@ -10,8 +10,8 @@
 ### `Rules while using Hooks?`
 *   Only call Hooks at the Top Level
     - Dont call Hooks inside loops, conditions, or nested functions.
-*   ONly call Hooks frm React Functions
-        - Call them from with in Reac functional components and nit hust regular JavaScript function.
+*   Call only Hooks inside React Functions
+        - Call them from with in Reac functional components and not in regular JavaScript function.
 
 ### `Why React Hooks?`
     
@@ -36,8 +36,8 @@
     - 2nd element is a state setter function
 *   If the New state value depends on the previous state value? You can pass a function to the setter function.
 *   When deling with objects or arrays, always make sure to spreadyour state variable and then call the setter function.
-### `useState Hook`
 
+### `useState Hook`
 *   Previously if you want to use state in component you need to Class.`eject`
 *   Now we can use state in Funcional Components with the help of  `useState`.
     Ex: Lets see an example 1st in Class Component and same thing convert it into Function Component using useState.
