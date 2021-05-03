@@ -61,7 +61,7 @@
     ```javascript
          <input type='text' value={name.firstName} onChange={e => setName({ ...name, firstName: e.target.value })} ></input>
     ```
-    - `{ ...name, firstName: e.target.value }this expression explains,Copy every property in the 'name' object and then just override the firstName field in the 'name' object.` 
+    - `{ ...name, firstName: e.target.value }` this expression explains,Copy every property in the 'name' object and then just override the firstName field in the 'name' object. 
 *   setState in class components will merge the oject change automatically.
 *   __Refer__: 
     *   __HookuseStateObjectCounter3.js__
